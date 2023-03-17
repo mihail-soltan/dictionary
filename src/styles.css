@@ -1,1 +1,204 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./variables.css";
+
+/* FONTS */
+
+h2 {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 4.8rem;
+}
+
+h4,
+h6,
+p {
+  font-weight: 400;
+}
+
+h4 {
+  font-size: 1.5rem;
+  line-height: 1.8rem;
+}
+
+h6 {
+  font-size: 1.25rem;
+}
+
+h6,
+p {
+  line-height: 1.5rem;
+}
+
+p.medium {
+  font-size: 1.125rem;
+}
+
+p.small {
+  font-size: 0.875rem;
+  line-height: 1rem;
+}
+
+.inter {
+  font-family: var(--inter);
+}
+
+.lora {
+  font-family: var(--lora);
+}
+
+.inconsolata {
+  font-family: var(--inconsolata);
+}
+
+
+.search-field {
+  all: unset;
+  background-color: var(--light-grey2);
+  /* background-image: url('./assets/search.svg'); */
+  /* background-repeat: no-repeat; */
+  /* background-position: right center; */
+  padding: 1.25rem 1.5rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  border-radius: 1rem;
+  transition: 0.3s;
+  position: relative;
+  box-sizing: border-box;
+}
+.search-container {
+  position: relative;
+  /* width: 100%; */
+  display: inline-block;
+  /* max-width: 40rem; */
+  /* margin: 0 auto; */
+}
+.search-field + i {
+  cursor: pointer;
+  position: absolute;
+  background-image: url('./assets/search.svg');
+  background-repeat: no-repeat;
+  /* background-position: center; */
+  width: 1rem;
+  height: 1rem;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* left: 14.5rem; */
+  /* right: 1.5rem; */
+  /* top: 1.5rem; */
+  /* color: var(--grey); */
+  /* z-index: 1; */
+}
+
+.search-field:focus {
+  border: 1px solid var(--pinkish-purple);
+}
+
+.search-field::placeholder {
+  color: var(--dark2);
+}
+
+.play-btn {
+  margin: 2rem;
+  all: unset;
+  cursor: pointer;
+  width: 4.68rem;
+  height: 4.68rem;
+  border-radius: 50%;
+  text-align: center;
+  position: relative;
+}
+/* using pseudo element to only target the btn background opacity without the img inside  */
+.play-btn::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.25;
+  background-color: var(--pinkish-purple);
+  border-radius: inherit;
+  transition: 0.3s;
+}
+
+.play-btn svg {
+  position: relative;
+  margin-left: 0.4rem;
+  z-index: 1;
+  transition: 0.3s;
+}
+
+.play-btn:hover::before {
+  opacity: 1;
+}
+
+.play-btn:hover svg path {
+  fill: #fff;
+}
+
+.toggle {
+  display: inline-block
+}
+.toggle input[type="checkbox"] {
+  display: none;
+}
+
+.toggle label {
+  background-color: var(--grey);
+  border-radius: 0.625rem;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: all ease-in-out 0.3s;
+  width: 2.5rem;
+  height: 1.4rem;
+  margin-right: 1.25rem;
+}
+
+.toggle label::after {
+  background-color: var(--white);
+  border-radius: 50%;
+  content: " ";
+  cursor: pointer;
+  display: inline-block;
+  position: absolute;
+  left: 3px;
+  top: 0.2rem;
+  transition: all ease-in-out 0.3s;
+  width: 1rem; /* 21px*/
+  height: 1rem; /* 21px*/
+}
+
+.toggle:hover label {
+  background-color: var(--pinkish-purple);
+}
+
+.toggle:hover svg path {
+  stroke: var(--pinkish-purple);
+}
+
+.toggle input[type="checkbox"]:checked ~ label::after {
+  transform: translateX(1.1rem);
+}
+
+.toggle input[type="checkbox"]:checked ~ label {
+  background-color: var(--pinkish-purple);
+}
+
+.toggle input[type="checkbox"]:checked ~ svg path {
+  stroke: var(--pinkish-purple);
+}
+
+/* DARKMODE SEARCH FIELD*/
+
+.search-field.dark {
+  background-color: var(--dark1);
+  color: var(--white);
+}
+
+.search-field.dark::placeholder {
+  color: var(--light-grey2);
+}
