@@ -1,8 +1,46 @@
 <div class="nav">
   <div class="nav-header">
-    <img src="../../../assets/book.svg" alt="book" class="logo"/>
+    <img src="../../../assets/book.svg" alt="book" class="logo" />
     <div class="toggle">
-      <input type="checkbox" name="" id="toggle" (change)="toggleTheme()" [checked]="darkmode"/>
+      <div class="select-container">
+        <div class="font-select" (click)="toggleFontSelect()">
+          <p
+            [ngClass]="{
+              inter: currentFont === 'Sans Serif',
+              lora: currentFont === 'Serif',
+              inconsolata: currentFont === 'Mono'
+            }"
+          >
+            {{ currentFont }}
+          </p>
+          <svg
+            width="13"
+            height="9"
+            viewBox="0 0 13 9"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            [ngClass]="{dark: darkmode }"
+          >
+            <path d="M1 1L7 7L13 1" stroke="#A445ED" stroke-width="1.5" />
+          </svg>
+        </div>
+        <ul class="font-list" [ngClass]="{ close: !isFontSelectOpen, dark: darkmode }">
+          <li
+            *ngFor="let font of fonts"
+            class="{{ font.class }}"
+            (click)="changeFont(font.font)"
+          >
+            {{ font.font }}
+          </li>
+        </ul>
+      </div>
+      <input
+        type="checkbox"
+        name=""
+        id="toggle"
+        (change)="toggleTheme()"
+        [checked]="darkmode"
+      />
       <label for="toggle"></label>
       <svg
         width="22"

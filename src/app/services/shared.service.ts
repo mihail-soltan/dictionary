@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +9,8 @@ export class SharedService {
   currentTheme = localStorage.getItem('darkmode');
   darkmode = new BehaviorSubject(eval(this.currentTheme!));
 
-  constructor() {}
+  apiUrl = 'https://api.dictionaryapi.dev/api/v2/entries/en';
+  constructor(private http: HttpClient) {}
 
   toggleTheme() {
     if (this.darkmode.value === false) {
@@ -18,6 +20,10 @@ export class SharedService {
       this.darkmode.next(false);
       localStorage.setItem('darkmode', 'false');
     }
+  }
+
+  getWord(word: string) {
+    return this.http.get(`${this.apiUrl}/${word}`);
   }
 
 }

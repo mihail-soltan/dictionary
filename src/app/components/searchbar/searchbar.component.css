@@ -1,0 +1,14 @@
+@import url('../../../variables.css');
+
+.search-field.dark {
+    background-color: var(--dark1);
+}
+
+.search-field.red {
+    border: 1px solid red;
+}
+
+p.medium.red {
+    color: red;
+    margin: 0.25rem 0;
+}

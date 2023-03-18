@@ -135,7 +135,9 @@ p.small {
 }
 
 .toggle {
-  display: inline-block
+  /* display: inline-block; */
+  display: flex;
+  align-items: center;
 }
 .toggle input[type="checkbox"] {
   display: none;
