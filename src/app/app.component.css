@@ -1,0 +1,28 @@
+@import "../variables.css";
+
+.outer-app-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  transition: 0.3s;
+}
+.outer-app-container.darkmode {
+    transition: 0.3s;
+  background-color: var(--black);
+}
+.app-container {
+  margin: 1.5rem;
+  width: 100%;
+}
+
+@media(min-width: 768px) {
+    .app-container {
+        margin: 3rem 2.5rem;
+    }
+}
+
+@media(min-width: 1024px) {
+    .app-container {
+        margin: 3rem 21rem;
+    }
+}

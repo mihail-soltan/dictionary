@@ -1,5 +1,10 @@
 @import "./variables.css";
 
+
+body {
+  margin: 0;
+  padding: 0;
+}
 /* FONTS */
 
 h2 {
@@ -49,13 +54,9 @@ p.small {
   font-family: var(--inconsolata);
 }
 
-
 .search-field {
   all: unset;
   background-color: var(--light-grey2);
-  /* background-image: url('./assets/search.svg'); */
-  /* background-repeat: no-repeat; */
-  /* background-position: right center; */
   padding: 1.25rem 1.5rem;
   font-weight: 700;
   font-size: 1.25rem;
@@ -63,20 +64,19 @@ p.small {
   transition: 0.3s;
   position: relative;
   box-sizing: border-box;
+  width: 100%;
 }
 .search-container {
   position: relative;
-  /* width: 100%; */
   display: inline-block;
-  /* max-width: 40rem; */
-  /* margin: 0 auto; */
+  width: 100%;
 }
+
 .search-field + i {
   cursor: pointer;
   position: absolute;
   background-image: url('./assets/search.svg');
   background-repeat: no-repeat;
-  /* background-position: center; */
   width: 1rem;
   height: 1rem;
   right: 1rem;
@@ -84,11 +84,6 @@ p.small {
   transform: translateY(-50%);
   background-repeat: no-repeat;
   background-size: contain;
-  /* left: 14.5rem; */
-  /* right: 1.5rem; */
-  /* top: 1.5rem; */
-  /* color: var(--grey); */
-  /* z-index: 1; */
 }
 
 .search-field:focus {
@@ -168,8 +163,8 @@ p.small {
   left: 3px;
   top: 0.2rem;
   transition: all ease-in-out 0.3s;
-  width: 1rem; /* 21px*/
-  height: 1rem; /* 21px*/
+  width: 1rem; 
+  height: 1rem; 
 }
 
 .toggle:hover label {
