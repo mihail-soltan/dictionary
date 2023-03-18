@@ -1,8 +1,23 @@
 <div class="search-container">
-  <input
-    type="text"
-    class="search-field"
-    placeholder="Search for any word..."
-  />
-  <i class="search-icon"></i>
+  <form (submit)="onSearch()" [formGroup]="searchFormGroup">
+    <input
+      type="text"
+      class="search-field"
+      placeholder="Search for any word..."
+      formControlName="search"
+      name="search"
+      id="search"
+      [ngClass]="{
+        dark: darkmode,
+        red: search.invalid && (search.dirty || search.touched || (search.pristine && searchFormGroup.submitted))
+      }"
+    />
+    <i class="search-icon" (click)="onSearch()"></i>
+  </form>
+</div>
+<div
+  *ngIf="search.invalid && (search.dirty || search.touched || (search.pristine && searchFormGroup.submitted))"
+  class="alert alert-danger"
+>
+  <div *ngIf="search.errors['required']"> <p class="medium red"> Whoops, can't be empty...</p></div>
 </div>
