@@ -30,8 +30,9 @@ export class NavbarComponent implements OnInit {
     this.isFontSelectOpen = !this.isFontSelectOpen;
   }
 
-  changeFont(font: string) {
-    this.currentFont = font;
+  changeFont(font: any) {
+    this.currentFont = font.font;
     this.toggleFontSelect();
+    this.sharedService.setCurrentFont(font.class);
   }
 }

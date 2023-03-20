@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 export class SharedService {
   currentTheme = localStorage.getItem('darkmode');
   darkmode = new BehaviorSubject(eval(this.currentTheme!));
+  currentFont = new BehaviorSubject('inter');
 
   apiUrl = 'https://api.dictionaryapi.dev/api/v2/entries/en';
   constructor(private http: HttpClient) {}
@@ -26,4 +27,7 @@ export class SharedService {
     return this.http.get(`${this.apiUrl}/${word}`);
   }
 
+  setCurrentFont(font: string) {
+    this.currentFont.next(font);
+  }
 }
