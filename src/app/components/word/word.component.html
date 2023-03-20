@@ -1,3 +1,30 @@
-<div class="word-container" [ngClass]="{darkmode: darkmode}">
-    <h1 *ngIf="!loading">Word</h1>
+<div
+  class="word-container"
+  [ngClass]="{ darkmode: darkmode }"
+  *ngFor="let item of words"
+  [ngClass]="currentFont"
+>
+  <div class="word-header">
+    <div>
+      <h2>{{ item.word }}</h2>
+      <h4>{{ item.phonetic }}</h4>
+    </div>
+    <audio #audioRef [src]="filterPhonetics(item.phonetics)"></audio>
+    <button *ngIf="filterPhonetics(item.phonetics)" class="play-btn" (click)="audioRef.play()">
+      <svg
+        width="21"
+        height="21"
+        viewBox="0 0 21 21"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M0 0V21L21 10.5L0 0Z"
+          fill="#A445ED"
+        />
+      </svg>
+    </button>
+  </div>
 </div>
