@@ -3,6 +3,8 @@
 .word-container {
   display: flex;
   flex-direction: column;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--grey);
 }
 
 .word-header {
@@ -13,7 +15,7 @@
   margin-bottom: 1rem;
 }
 .word-header h2 {
-    margin: 2.8rem 0 0.5rem 0;
+  margin: 2.8rem 0 0.5rem 0;
 }
 .word-header h4 {
   color: var(--pinkish-purple);
@@ -21,6 +23,43 @@
 }
 
 .play-btn {
-    align-self: flex-end;
-    margin-bottom: 0.7rem;
+  align-self: flex-end;
+  margin-bottom: 0.7rem;
+}
+
+/* PART OF SPEECH HEADING */
+
+.pos-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-style: italic;
+}
+h6 {
+  margin: 2.5rem 0;
+  color: var(--grey)
+}
+.synonyms-heading, .synonyms {
+  display: inline-block;
+}
+.synonyms-heading {
+  margin-right: 0.5rem;
+}
+.synonyms {
+  color: var(--pinkish-purple);
+  /* margin: 0; */
+  font-weight: 700;
+}
+
+/* .pos-heading h3, hr{
+  display: inline-block;
+} */
+
+hr {
+  width: 90%;
+  margin: 0.35rem 1rem;
+}
+
+.sauce {
+  color: var(--grey);
 }

@@ -9,22 +9,53 @@
       <h2>{{ item.word }}</h2>
       <h4>{{ item.phonetic }}</h4>
     </div>
-    <audio #audioRef [src]="filterPhonetics(item.phonetics)"></audio>
-    <button *ngIf="filterPhonetics(item.phonetics)" class="play-btn" (click)="audioRef.play()">
-      <svg
+      <audio
+      #audioRef
+      *ngIf="item.phonetics.length"
+      [src]="filterPhonetics(item.phonetics)"
+      ></audio>
+      <button *ngIf="filterPhonetics(item.phonetics) !== ''" class="play-btn" (click)="playAudio()">
+        <svg
         width="21"
         height="21"
         viewBox="0 0 21 21"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-      >
+        >
         <path
-          fill-rule="evenodd"
+        fill-rule="evenodd"
           clip-rule="evenodd"
           d="M0 0V21L21 10.5L0 0Z"
           fill="#A445ED"
-        />
-      </svg>
-    </button>
+          />
+        </svg>
+      </button>
   </div>
+  <div class="word-body">
+    <div class="word-meaning" *ngFor="let word of item.meanings">
+      <div class="pos-heading">
+        <h3>{{ word.partOfSpeech }}</h3>
+        <hr />
+      </div>
+      <h6>Meaning</h6>
+      <ul>
+        <li *ngFor="let def of word.definitions">{{ def.definition }}</li>
+      </ul>
+      <h6 class="synonyms-heading">Synonyms:</h6>
+      <h6 *ngIf="word.synonyms.length > 0" class="synonyms">
+        {{ word.synonyms.join(', ') }}
+      </h6>
+      <h6 *ngIf="word.synonyms.length == 0" class="synonyms">
+        No synonyms available
+      </h6>
+      
+    </div>
+  </div>
+  <p *ngIf="item.sourceUrls.length" class="sauce">
+    Source:
+    <a [href]="item.sourceUrls[0]" target="_blank">
+      {{ item.sourceUrls[0] }}
+      <img src="../../../assets/external_link.svg" alt="external_link" />
+    </a>
+  </p>
 </div>
