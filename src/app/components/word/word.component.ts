@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SharedService } from 'src/app/services/shared.service';
 import { tap, catchError } from 'rxjs/operators';
@@ -20,6 +20,8 @@ export class WordComponent implements OnInit {
   };
   words: any = [];
   currentFont: string = 'Sans Serif';
+  @ViewChild('audioRef') audioRef!: ElementRef<HTMLAudioElement>;
+  audio: string = '';
   constructor(
     private route: ActivatedRoute,
     private sharedService: SharedService
@@ -34,7 +36,12 @@ export class WordComponent implements OnInit {
     });
     this.sharedService.currentFont.subscribe((value: string) => {
       this.currentFont = value;
-    })
+    });
+  }
+
+  playAudio() {
+    this.audioRef.nativeElement.play();
+    console.log(this.audioRef.nativeElement.getAttribute('src'));
   }
 
   getWord(word: string) {
@@ -58,10 +65,10 @@ export class WordComponent implements OnInit {
       .subscribe((data) => {
         this.loading = false;
         this.words = data;
-        this.filterPhonetics(this.words[0].phonetics)
       });
   }
   filterPhonetics(phonetics: any[]) {
-    return phonetics.find((phonetic) => phonetic['audio'] !== undefined).audio;
+    const filteredPhonetics = phonetics.filter((phonetic) => phonetic['audio'].length > 0);
+    return filteredPhonetics.length > 0 ? filteredPhonetics[0].audio : '';
   }
 }

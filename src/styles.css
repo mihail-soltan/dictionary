@@ -169,11 +169,11 @@ p.small {
   height: 1rem; 
 }
 
-.toggle:hover label {
+.toggle label:hover {
   background-color: var(--pinkish-purple);
 }
 
-.toggle:hover svg path {
+.toggle label:hover + svg path {
   stroke: var(--pinkish-purple);
 }
 
