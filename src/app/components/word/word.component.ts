@@ -13,11 +13,13 @@ export class WordComponent implements OnInit {
   loading: boolean = false;
   darkmode: boolean = false;
   error = {
+    emoji: '😕',
     status: 0,
     title: '',
     message: '',
     resolution: '',
   };
+  isError: boolean = false;
   words: any = [];
   currentFont: string = 'Sans Serif';
   @ViewChild('audioRef') audioRef!: ElementRef<HTMLAudioElement>;
@@ -54,6 +56,7 @@ export class WordComponent implements OnInit {
         }),
         catchError((err) => {
           this.loading = false;
+          this.isError = true;
           this.error.status = err.status;
           this.error.title = err.error.title;
           this.error.message = err.error.message;
@@ -64,6 +67,7 @@ export class WordComponent implements OnInit {
       )
       .subscribe((data) => {
         this.loading = false;
+        this.isError = false;
         this.words = data;
       });
   }

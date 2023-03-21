@@ -63,3 +63,16 @@ hr {
 .sauce {
   color: var(--grey);
 }
+
+.error-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 70%;
+}
+
+.error-message > * {
+  margin: 0.5rem;
+}
